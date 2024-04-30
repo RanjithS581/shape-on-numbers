@@ -8,9 +8,12 @@
 <style>
 
     .display{
-        width: 250px;
-        height: 200px;
-        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        /* border: 1px solid black; */
+        display: flex;
+        justify-content: center;
+    
     }
     .action{
         display: flex;
@@ -55,6 +58,11 @@
         border-radius: 5px;
         display: none;
     }
+    .count{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
 </style>
 <body>
@@ -96,31 +104,57 @@
         const countValue = document.getElementById('value');
         const click = document.getElementById('click');
         const reset = document.getElementById('reset');
-        const red = document.getElementById('.red')
-        const blue = document.getElementById('.blue');
-        const rec = document.getElementById('rec'); 
 
+        const red = document.querySelector('.red')
+        const blue = document.querySelector('.blue');
+        const rec = document.querySelector('.rec'); 
+        const square = document.querySelector('.square');
+        const round = document.querySelector('.round');
 
-      
 
         click.addEventListener('click' , function(){
                 count++;
                 countValue.textContent = count;
+
+            rec.style.display = 'none'; 
+            square.style.display = 'none';
+            round.style.display = 'none'; 
+            
+
+        if (count % 2 === 1) {
+            rec.style.display = 'block';        
+        }
+        if(count % 2 === 0){
+            square.style.display = 'block'; 
+        }
+        if(count % 5 == 0){
+            round.style.display = 'block';
+            rec.style.display = 'none';
+            square.style.display = 'none';
+        }
+
         });
 
         reset.addEventListener('click' , function(){
             count = 0;
             countValue.textContent = count;
+            rec.style.display = 'none'; 
+            square.style.display = 'none';
+            round.style.display = 'none'; 
         });
 
-        function updateDisplay() {
-            countValue.textContent = count;
-            if (count % 2 == 1) {
-                rec.style.display = 'block'; 
-            } else {
-                rec.style.display = 'none'; 
-            }
-        }
+        red.addEventListener('mouseover' , function(){
+            rec.style.backgroundColor = 'red';
+            round.style.backgroundColor = 'red';
+            square.style.backgroundColor = 'red';
+        });
+
+        blue.addEventListener('mouseover' , function(){
+            rec.style.backgroundColor = 'blue';
+            round.style.backgroundColor = 'blue';
+            square.style.backgroundColor = 'blue';
+        })
+
 
     </script>
 
