@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    .display{
+        width: 250px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    .action{
+        display: flex;
+        justify-content: space-evenly;
+        width: 200px;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: auto;
+        margin-top: 18%;
+    }
+    .red{
+        background-color: red;
+    }
+    .blue{
+        background-color: blue;
+    }
+    .round{
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 30px;
+        display: none;
+    }
+    .rec{
+        width: 100px;
+        height: 60px;
+        background-color: black;
+        border-radius: 5px;
+        display: none;
+    }
+    .square{
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        border-radius: 5px;
+        display: none;
+    }
+
+</style>
+<body>
+    <div class="container">
+
+    <div class="display">
+        <div class="round"></div>
+
+        <div class="rec"></div>
+
+        <div class="square"></div>
+    </div>
+
+    <div class="count">
+        <label> Count= </label>
+        <p id="value"> 0 </p>
+    </div>
+    
+    <div class="action">
+
+       <div> <button id="click"> Click </button> </div>
+
+       <div> <button id="reset"> Reset </button> </div>
+
+       <div> <button class="red" id="red"> Red </button> </div>
+
+       <div> <button class="blue" id="blue"> Blue </button> </div>
+
+    </div>
+
+    </div>
+
+    
+
+    <script>
+
+        let count = 0;
+
+        const countValue = document.getElementById('value');
+        const click = document.getElementById('click');
+        const reset = document.getElementById('reset');
+        const red = document.getElementById('.red')
+        const blue = document.getElementById('.blue');
+        const rec = document.getElementById('rec'); 
+
+
+      
+
+        click.addEventListener('click' , function(){
+                count++;
+                countValue.textContent = count;
+        });
+
+        reset.addEventListener('click' , function(){
+            count = 0;
+            countValue.textContent = count;
+        });
+
+        function updateDisplay() {
+            countValue.textContent = count;
+            if (count % 2 == 1) {
+                rec.style.display = 'block'; 
+            } else {
+                rec.style.display = 'none'; 
+            }
+        }
+
+    </script>
+
+</body>
+</html>
